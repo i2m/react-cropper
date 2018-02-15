@@ -95,6 +95,12 @@ class ReactCropper extends Component {
     if (nextProps.scaleY !== this.props.scaleY) {
       this.scaleY(nextProps.scaleY);
     }
+    if (nextProps.skewX !== this.props.skewX) {
+      this.skewX(nextProps.skewX);
+    }
+    if (nextProps.skewY !== this.props.skewY) {
+      this.skewY(nextProps.skewY);
+    }
     if (nextProps.enable !== this.props.enable) {
       if (nextProps.enable) {
         this.enable();
@@ -230,6 +236,18 @@ class ReactCropper extends Component {
     return this.cropper.scaleY(scaleY);
   }
 
+  skew(skewX, skewY) {
+    return this.cropper.skew(skewX, skewY);
+  }
+
+  skewX(skewX) {
+    return this.cropper.skewX(skewX);
+  }
+
+  skewY(skewY) {
+    return this.cropper.skewY(skewY);
+  }
+
   render() {
     const {
       src,
@@ -277,9 +295,13 @@ ReactCropper.propTypes = {
     rotate: PropTypes.number,
     scaleX: PropTypes.number,
     scaleY: PropTypes.number,
+    skewX: PropTypes.number,
+    skewY: PropTypes.number,
   }),
   scaleX: PropTypes.number,
   scaleY: PropTypes.number,
+  skewX: PropTypes.number,
+  skewY: PropTypes.number,
   enable: PropTypes.bool,
   cropBoxData: PropTypes.shape({
     left: PropTypes.number,
@@ -343,6 +365,8 @@ ReactCropper.defaultProps = {
   data: null,
   scaleX: 1,
   scaleY: 1,
+  skewX: 0,
+  skewY: 0,
   enable: true,
   zoomTo: 1,
   rotateTo: 0,
